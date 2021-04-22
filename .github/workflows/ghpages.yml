@@ -1,0 +1,19 @@
+name: Deploy to Github pages
+on: 
+  push:
+    branches:
+      - "master"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build
+        run: |
+          npm install
+          npm run build
+      - name: Publish to GH pages
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        with:
+          branch: gh-pages
+          folder: dist
