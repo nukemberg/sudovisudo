@@ -76,6 +76,8 @@ This year, we will celebrate Sysadmin day in Melio offices in Tel-Aviv, on Wedne
 Stay tuned!
 
 https://sysadminday.com/
+
+To register, use the \`register\` command (duh!)
 `;
 
 const eventHosts = `Niv Yungelson
@@ -93,11 +95,22 @@ const customCommandMapping = Terminal.CommandMapping.create({
     'help': {
         'function': (state, opts) => {
             return {
-                output: Terminal.OutputFactory.makeTextOutput('Try `ls /`')
+                output: Terminal.OutputFactory.makeTextOutput(`Commands:
+Filesystem commands - ls, cat
+Other - register
+---------
+Hint: try \`ls \`
+`)
             };
         },
         'optDef': {}
-   }
+   },
+   'register': {
+       'function': (state, opts) => {
+            window.location.href = 'https://docs.google.com/forms/d/e/1FAIpQLSdwP4e69N8I5_zrlcZICyY8vQ4ZJukM8Z9kjGluTd5Z9oyctg/viewform?usp=sf_link'
+       },
+       'optDef': {}
+   } 
 })
 // Execution
 const emulator = new Terminal.Emulator();
